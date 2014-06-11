@@ -6,6 +6,8 @@
 
 package Interface;
 
+import java.sql.Date;
+
 /**
  *
  * @author luan.tavares
@@ -17,6 +19,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+    }
+    
+    public void carregaDadosAno (Date ano) {
+        
     }
 
     /**
