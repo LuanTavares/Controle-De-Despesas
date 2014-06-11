@@ -102,7 +102,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelMesRef.setText("Mês Atual:");
+        jLabelMesRef.setText("Mes Atual:");
 
         jTextFieldMesRef.setEnabled(false);
 
