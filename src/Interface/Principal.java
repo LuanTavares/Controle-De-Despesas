@@ -7,6 +7,8 @@
 package Interface;
 
 import java.sql.Date;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -20,10 +22,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-    
-    public void carregaDadosAno (Date ano) {
-        
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,14 +144,6 @@ public class Principal extends javax.swing.JFrame {
 
         jPanelJaneiro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Janeiro"));
 
-        jTableJaneiro.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
         jScrollPanelJaneiro.setViewportView(jTableJaneiro);
 
         jLabelSaldoJaneiro.setText("Saldo do Mês:");
