@@ -6,8 +6,13 @@
 
 package Interface;
 
-import java.sql.Date;
+import Classes.Lancamento;
+import DAO.LancamentoDAO;
+import java.util.GregorianCalendar;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -16,13 +21,183 @@ import javax.swing.table.TableColumnModel;
  */
 public class Principal extends javax.swing.JFrame {
 
+    private List <Lancamento> lancamentos = new LinkedList<Lancamento>();
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        popularJanelaJaneiro();
+        popularJanelaFevereiro();
+        popularJanelaMarco();
+        popularJanelaAbril();
+        popularJanelaMaio();
+        popularJanelaJunho();
+        popularJanelaJulho();
     }
 
+    public void popularJanelaJaneiro() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar janeiro = new GregorianCalendar(2014, 0, 31);        
+        lancamentos = lancamentoDao.buscaLancamentos(janeiro);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableJaneiro.setModel(modelo);
+        if (lancamentos != null){
+            for(int i = 0; i< lancamentos.size(); i++) {
+                Lancamento dialogLancamento = new Lancamento();
+                dialogLancamento = lancamentos.get(i);
+                modelo.addRow(new Object[]{
+                    dialogLancamento.getTipo(),
+                    dialogLancamento.getValor()
+                });
+            }
+        }
+        
+    }
+    
+    public void popularJanelaFevereiro() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar fevereiro = new GregorianCalendar(2014, 1, 28);
+        lancamentos = lancamentoDao.buscaLancamentos(fevereiro);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableFevereiro.setModel(modelo);
+        for(int i = 0; i< lancamentos.size(); i++) {
+            Lancamento dialogLancamento = new Lancamento();
+            dialogLancamento = lancamentos.get(i);
+            modelo.addRow(new Object[]{
+                dialogLancamento.getTipo(),
+                dialogLancamento.getValor()
+            });
+        }
+        
+    }
+    
+    public void popularJanelaMarco() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar marco = new GregorianCalendar(2014, 2, 31);
+        lancamentos = lancamentoDao.buscaLancamentos(marco);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableMarço.setModel(modelo);
+        for(int i = 0; i< lancamentos.size(); i++) {
+            Lancamento dialogLancamento = new Lancamento();
+            dialogLancamento = lancamentos.get(i);
+            modelo.addRow(new Object[]{
+                dialogLancamento.getTipo(),
+                dialogLancamento.getValor()
+            });
+        }
+        
+    }
+    
+    public void popularJanelaAbril() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar abril = new GregorianCalendar(2014, 3, 30);
+        lancamentos = lancamentoDao.buscaLancamentos(abril);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableAbril.setModel(modelo);
+        for(int i = 0; i< lancamentos.size(); i++) {
+            Lancamento dialogLancamento = new Lancamento();
+            dialogLancamento = lancamentos.get(i);
+            modelo.addRow(new Object[]{
+                dialogLancamento.getTipo(),
+                dialogLancamento.getValor()
+            });
+        }
+        
+    }
+    
+    public void popularJanelaMaio() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar maio = new GregorianCalendar(2014, 4, 31);
+        lancamentos = lancamentoDao.buscaLancamentos(maio);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableMaio.setModel(modelo);
+        for(int i = 0; i< lancamentos.size(); i++) {
+            Lancamento dialogLancamento = new Lancamento();
+            dialogLancamento = lancamentos.get(i);
+            modelo.addRow(new Object[]{
+                dialogLancamento.getTipo(),
+                dialogLancamento.getValor()
+            });
+        }
+        
+    }
+    
+    public void popularJanelaJunho() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar junho = new GregorianCalendar(2014, 5, 30);
+        lancamentos = lancamentoDao.buscaLancamentos(junho);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableJunho.setModel(modelo);
+        for(int i = 0; i< lancamentos.size(); i++) {
+            Lancamento dialogLancamento = new Lancamento();
+            dialogLancamento = lancamentos.get(i);
+            modelo.addRow(new Object[]{
+                dialogLancamento.getTipo(),
+                dialogLancamento.getValor()
+            });
+        }
+        
+    }
+    
+    public void popularJanelaJulho() {
+        LancamentoDAO lancamentoDao = new LancamentoDAO();
+        String[] colunas = {"Tipo","Valor"};
+        GregorianCalendar julho = new GregorianCalendar(2014, 6, 31);
+        lancamentos = lancamentoDao.buscaLancamentos(julho);
+        DefaultTableModel modelo = new DefaultTableModel(null,colunas) {
+            @Override
+            public boolean isCellEditable(int row, int col){
+                return false;
+            }
+        };
+        jTableJulho.setModel(modelo);
+        for(int i = 0; i< lancamentos.size(); i++) {
+            Lancamento dialogLancamento = new Lancamento();
+            dialogLancamento = lancamentos.get(i);
+            modelo.addRow(new Object[]{
+                dialogLancamento.getTipo(),
+                dialogLancamento.getValor()
+            });
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
