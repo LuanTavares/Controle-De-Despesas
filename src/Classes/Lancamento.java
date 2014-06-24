@@ -18,6 +18,7 @@ public class Lancamento {
     private int codigo, tipo;
     private Date data;
     private double valor;
+    private String descicaoTipo;
 
     public Lancamento() {
     }
@@ -59,6 +60,14 @@ public class Lancamento {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public String getDescicaoTipo() {
+        return descicaoTipo;
+    }
+
+    public void setDescicaoTipo(String descicaoTipo) {
+        this.descicaoTipo = descicaoTipo;
     }
     
     
