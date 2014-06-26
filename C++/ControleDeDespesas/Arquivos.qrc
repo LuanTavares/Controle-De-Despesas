@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Auxiliares">
+        <file>Arquivos/Banco.txt</file>
+    </qresource>
+</RCC>
