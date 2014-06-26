@@ -5,13 +5,15 @@ SOURCES += \
     TipoLancamento.cpp \
     Lancamento.cpp \
     TipoLancamentoDAO.cpp \
-    Conexao.cpp
+    Conexao.cpp \
+    LancamentoDAO.cpp
 
 HEADERS += \
     TipoLancamento.h \
     Lancamento.h \
     TipoLancamentoDAO.h \
-    Conexao.h
+    Conexao.h \
+    LancamentoDAO.h
 
 RESOURCES += \
     Arquivos.qrc

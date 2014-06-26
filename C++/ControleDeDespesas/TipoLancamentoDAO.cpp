@@ -1,7 +1,6 @@
 #include "TipoLancamentoDAO.h"
 
-TipoLancamentoDAO::TipoLancamentoDAO() {
-    conn = new Conexao();
+TipoLancamentoDAO::TipoLancamentoDAO(Conexao * conn) {
     db = conn->getDataBase();
 }
 
@@ -13,13 +12,13 @@ QList <TipoLancamento> TipoLancamentoDAO::getTiposLancamento(){
     QList <TipoLancamento> retorno;
     if(db.open()) {
         query = QSqlQuery(db);
-        query.prepare("SELECT * FROM TipLan");
+        query.prepare("SELECT CodTip, DesTip, NatTip FROM TipLan");
         if(!query.exec()){
             std::cout << query.lastError().text().toStdString() << std::endl;
         } else {
             int i = 0;
             while (query.next()) {
-                TipoLancamento dialog(query.value(1).toString(),query.value(2).toString(),query.value(0).toInt());
+                TipoLancamento dialog(query.value(0).toInt(),query.value(1).toString(),query.value(2).toString());
                 retorno.insert(i,dialog);
                 i++;
             }

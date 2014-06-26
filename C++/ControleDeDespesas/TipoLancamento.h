@@ -5,7 +5,7 @@
 class TipoLancamento {
 public:
     TipoLancamento();
-    TipoLancamento(QString DesTip, QString NatTip, int CodTip);
+    TipoLancamento(int CodTip, QString DesTip, QString NatTip);
     ~TipoLancamento();
     void setDesTip(QString DesTip);
     void setNatTip(QString NatTip);

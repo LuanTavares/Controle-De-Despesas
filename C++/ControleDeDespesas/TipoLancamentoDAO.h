@@ -10,7 +10,7 @@
 class TipoLancamentoDAO {
 
 public:
-    TipoLancamentoDAO();
+    TipoLancamentoDAO(Conexao *conn);
     ~TipoLancamentoDAO();
     QList<TipoLancamento> getTiposLancamento();
     bool insereTipoLancamento(TipoLancamento tipo);
@@ -18,7 +18,6 @@ public:
     bool deletaTipoLancamento(TipoLancamento tipo);
 
 private:
-    Conexao * conn;
     QSqlDatabase db;
     QSqlQuery query;
 };

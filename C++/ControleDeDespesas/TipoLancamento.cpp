@@ -4,7 +4,7 @@ TipoLancamento::TipoLancamento() {
 
 }
 
-TipoLancamento::TipoLancamento(QString DesTip, QString NatTip, int CodTip) {
+TipoLancamento::TipoLancamento(int CodTip, QString DesTip, QString NatTip) {
     this->DesTip = DesTip;
     this->NatTip = NatTip;
     this->CodTip = CodTip;
