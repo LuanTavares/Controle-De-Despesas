@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Principal</class>
+ <widget class="QMainWindow" name="Principal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Controle de Despesas</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>791</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tabJaneiro">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>321</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCadastro">
+    <property name="title">
+     <string>Cadastro</string>
+    </property>
+    <addaction name="actionTipo"/>
+   </widget>
+   <widget class="QMenu" name="menuLancamento">
+    <property name="title">
+     <string>Lancamento</string>
+    </property>
+    <addaction name="actionLancamento"/>
+   </widget>
+   <addaction name="menuCadastro"/>
+   <addaction name="menuLancamento"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTipo">
+   <property name="text">
+    <string>Tipo</string>
+   </property>
+  </action>
+  <action name="actionLancamento">
+   <property name="text">
+    <string>Lancamento</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
