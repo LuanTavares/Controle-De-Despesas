@@ -11,6 +11,7 @@ CadastroLancamento::CadastroLancamento(Conexao *connection, QWidget *parent) : Q
         listNomeTipos.insert(i,dialogTipo.getDesTip());
     }
     ui->comboBoxTipoDeLancamento->addItems(listNomeTipos);
+    this->setWindowFlags(Qt::WindowStaysOnTopHint);
     connect(ui->buttonBox,SIGNAL(accepted()),this,SLOT(gravaLancamento()));
 }
 
@@ -19,13 +20,18 @@ CadastroLancamento::~CadastroLancamento() {
 }
 
 void CadastroLancamento::gravaLancamento() {
-    TipoLancamento dialogTipo = listTipos.at(ui->comboBoxTipoDeLancamento->currentIndex());
-    Lancamento * dialogLancamento = new Lancamento(0,
-                                        &dialogTipo,
-                                        ui->dateEditDataLancamento->date(),
-                                        ui->spinBoxQtdParcelas->value(),
-                                        ui->doubleSpinBoxVlrParcela->value(),
-                                        ui->textEditObs->toPlainText());
-    LancamentoDAO * dialogLancamentoDAO = new LancamentoDAO(conn);
-    dialogLancamentoDAO->insereLancamento(*dialogLancamento);
+    QDate dialog = ui->dateEditDataLancamento->date();
+    for (int i = 1; i <= ui->spinBoxQtdParcelas->value(); ++i) {
+        //std::cout << dialog.toString("dd/MM/yyyy").toStdString() << std::endl;
+        TipoLancamento dialogTipo = listTipos.at(ui->comboBoxTipoDeLancamento->currentIndex());
+        Lancamento * dialogLancamento = new Lancamento(0,
+                                            &dialogTipo,
+                                            dialog,
+                                            i,
+                                            ui->doubleSpinBoxVlrParcela->value(),
+                                            ui->textEditObs->toPlainText());
+        LancamentoDAO * dialogLancamentoDAO = new LancamentoDAO(conn);
+        dialogLancamentoDAO->insereLancamento(*dialogLancamento);
+        dialog = dialog.addMonths(1);
+    }
 }

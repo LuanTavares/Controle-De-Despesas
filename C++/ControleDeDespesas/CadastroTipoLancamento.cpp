@@ -4,6 +4,7 @@
 CadastroTipoLancamento::CadastroTipoLancamento(Conexao *connection, QWidget *parent) : QDialog(parent), ui(new Ui::CadastroTipoLancamento) {
     ui->setupUi(this);
     this->conn = connection;
+    this->setWindowFlags(Qt::WindowStaysOnTopHint);
     connect(ui->buttonBox,SIGNAL(accepted()),this,SLOT(gravaTipoLancamento()));
 }
 
