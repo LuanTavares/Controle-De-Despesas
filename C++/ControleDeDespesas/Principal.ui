@@ -14,7 +14,7 @@
    <string>Controle de Despesas</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="tabWidgetMeses">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -28,28 +28,48 @@
     </property>
     <widget class="QWidget" name="tabJaneiro">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Janeiro</string>
      </attribute>
-     <widget class="QTableView" name="tableView">
+     <widget class="QTableView" name="tableViewJaneiro">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>321</width>
-        <height>192</height>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>511</height>
        </rect>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="tabFevereiro">
      <attribute name="title">
-      <string>Page</string>
+      <string>Fevereiro</string>
      </attribute>
+     <widget class="QTableView" name="tableViewFevereiro">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>511</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tabMarco">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Março</string>
      </attribute>
+     <widget class="QTableView" name="tableViewMarco">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>511</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

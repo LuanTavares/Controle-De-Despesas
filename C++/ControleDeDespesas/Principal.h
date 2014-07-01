@@ -6,6 +6,8 @@
 #include <QStringList>
 #include <QSqlTableModel>
 #include "Conexao.h"
+#include "CadastroTipoLancamento.h"
+#include "CadastroLancamento.h"
 
 namespace Ui {
 class Principal;
@@ -16,6 +18,7 @@ class Principal : public QMainWindow {
     
 public:
     explicit Principal(QWidget *parent = 0);
+    void atualizaTabela(QTableView * mes);
     ~Principal();
     
 private:
@@ -23,7 +26,9 @@ private:
     Conexao * con;
 
 public slots:
-    void teste();
+    void cadastraTipoLancamento();
+    void cadastraLancamento();
+    void alimentaTabelas(int mes);
 };
 
 #endif // PRINCIPAL_H

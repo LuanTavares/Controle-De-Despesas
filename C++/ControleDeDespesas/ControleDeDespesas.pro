@@ -7,7 +7,9 @@ SOURCES += \
     TipoLancamentoDAO.cpp \
     Conexao.cpp \
     LancamentoDAO.cpp \
-    Principal.cpp
+    Principal.cpp \
+    CadastroTipoLancamento.cpp \
+    CadastroLancamento.cpp
 
 HEADERS += \
     TipoLancamento.h \
@@ -15,10 +17,14 @@ HEADERS += \
     TipoLancamentoDAO.h \
     Conexao.h \
     LancamentoDAO.h \
-    Principal.h
+    Principal.h \
+    CadastroTipoLancamento.h \
+    CadastroLancamento.h
 
 RESOURCES += \
     Arquivos.qrc
 
 FORMS += \
-    Principal.ui
+    Principal.ui \
+    CadastroTipoLancamento.ui \
+    CadastroLancamento.ui
