@@ -34,6 +34,66 @@ QList <Lancamento> LancamentoDAO::getLancamentos() {
     return retorno;
 }
 
+double LancamentoDAO::getDespesas(QDate dataInicio, QDate dataFim) {
+    double retorno = 0;
+    if(db.open()) {
+        query = QSqlQuery(db);
+        query.prepare("SELECT SUM(LanMes.VlrPar) SumVlr FROM LanMes, TipLan "
+                      "WHERE LanMes.DatLan BETWEEN '"+dataInicio.toString("dd/MM/yyyy")+
+                      "' AND '"+dataFim.toString("dd/MM/yyyy")+"' AND TipLan.CodTip = LanMes.TipLan "
+                      "AND TipLan.NatTip = 'Despesa'");
+        if(!query.exec()){
+            std::cout << query.lastError().text().toStdString() << std::endl;
+        } else {
+            if(query.next())
+                retorno = query.value(0).toDouble();
+        }
+        db.close();
+    } else {
+        std::cout << db.lastError().text().toStdString() << std::endl;
+    }
+    return retorno;
+}
+
+double LancamentoDAO::getProventos(QDate dataInicio, QDate dataFim) {
+    double retorno = 0;
+    if(db.open()) {
+        query = QSqlQuery(db);
+        query.prepare("SELECT SUM(LanMes.VlrPar) SumVlr FROM LanMes, TipLan "
+                      "WHERE LanMes.DatLan BETWEEN '"+dataInicio.toString("dd/MM/yyyy")+
+                      "' AND '"+dataFim.toString("dd/MM/yyyy")+"' AND TipLan.CodTip = LanMes.TipLan "
+                      "AND TipLan.NatTip = 'Provento'");
+        if(!query.exec()){
+            std::cout << query.lastError().text().toStdString() << std::endl;
+        } else {
+            if(query.next())
+                retorno = query.value(0).toDouble();
+        }
+        db.close();
+    } else {
+        std::cout << db.lastError().text().toStdString() << std::endl;
+    }
+    return retorno;
+}
+
+QSqlQueryModel * LancamentoDAO::get(QDate dataInicio, QDate dataFim){
+    QSqlQueryModel * model = new QSqlQueryModel();
+    if(db.open()) {
+        QString tmp = "SELECT TipLan.DesTip, TipLan.NatTip, LanMes.DatLan, LanMes.NumPar, LanMes.VlrPar, LanMes.ObsLan FROM LanMes,TipLan WHERE LanMes.DatLan BETWEEN '"+dataInicio.toString("dd/MM/yyyy")+"' AND '"+dataFim.toString("dd/MM/yyyy")+"' AND LanMes.TipLan = TipLan.CodTip";
+        model->setQuery(tmp);
+        model->setHeaderData(0, Qt::Horizontal, QObject::tr("Descrição"));
+        model->setHeaderData(1, Qt::Horizontal, QObject::tr("Natureza"));
+        model->setHeaderData(2, Qt::Horizontal, QObject::tr("Data"));
+        model->setHeaderData(3, Qt::Horizontal, QObject::tr("Parcela"));
+        model->setHeaderData(4, Qt::Horizontal, QObject::tr("Valor"));
+        model->setHeaderData(5, Qt::Horizontal, QObject::tr("Observação"));
+    } else {
+        std::cout << db.lastError().text().toStdString() << std::endl;
+        model = NULL;
+    }
+    return model;
+}
+
 bool LancamentoDAO::insereLancamento(Lancamento lan) {
     if(db.open()) {
         query = QSqlQuery(db);

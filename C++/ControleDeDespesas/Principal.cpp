@@ -25,64 +25,57 @@ void Principal::cadastraLancamento() {
 }
 
 void Principal::alimentaTabelas(int mes) {
+    mes++;
     switch (mes) {
-    case 0:
-        atualizaTabela(ui->tableViewJaneiro,mes);
-        break;
     case 1:
-        atualizaTabela(ui->tableViewFevereiro,mes);
+        atualizaTabela(ui->tableViewJaneiro,ui->lineEditSaldoMesJaneiro,mes);
         break;
     case 2:
-        atualizaTabela(ui->tableViewMarco,mes);
+        atualizaTabela(ui->tableViewFevereiro,ui->lineEditSaldoMesFevereiro,mes);
         break;
     case 3:
-        atualizaTabela(ui->tableViewAbril,mes);
+        atualizaTabela(ui->tableViewMarco,ui->lineEditSaldoMesMarco,mes);
         break;
     case 4:
-        atualizaTabela(ui->tableViewMaio,mes);
+        atualizaTabela(ui->tableViewAbril,ui->lineEditSaldoMesAbril,mes);
         break;
     case 5:
-        atualizaTabela(ui->tableViewJunho,mes);
+        atualizaTabela(ui->tableViewMaio,ui->lineEditSaldoMesMaio,mes);
         break;
     case 6:
-        atualizaTabela(ui->tableViewJulho,mes);
+        atualizaTabela(ui->tableViewJunho,ui->lineEditSaldoMesJunho,mes);
         break;
     case 7:
-        atualizaTabela(ui->tableViewAgosto,mes);
+        atualizaTabela(ui->tableViewJulho,ui->lineEditSaldoMesJulho,mes);
         break;
     case 8:
-        atualizaTabela(ui->tableViewSetembro,mes);
+        atualizaTabela(ui->tableViewAgosto,ui->lineEditSaldoMesAgosto,mes);
         break;
     case 9:
-        atualizaTabela(ui->tableViewOutubro,mes);
+        atualizaTabela(ui->tableViewSetembro,ui->lineEditSaldoMesSetembro,mes);
         break;
     case 10:
-        atualizaTabela(ui->tableViewNovembro,mes);
+        atualizaTabela(ui->tableViewOutubro,ui->lineEditSaldoMesOutubro,mes);
         break;
     case 11:
-        atualizaTabela(ui->tableViewDezembro,mes);
+        atualizaTabela(ui->tableViewNovembro,ui->lineEditSaldoMesNovembro,mes);
+        break;
+    case 12:
+        atualizaTabela(ui->tableViewDezembro,ui->lineEditSaldoMesDezembro,mes);
         break;
     default:
         break;
     }
 }
 
-void Principal::atualizaTabela(QTableView *tableMes, int mesSelecionado) {
-    con->getDataBase().open();
-    mesSelecionado++;
+void Principal::atualizaTabela(QTableView *tableMes,QLineEdit *lineMes, int mesSelecionado) {
     QDate DatRef = ui->dateEditAnoRef->date();
     QDate iniDatLan;
     iniDatLan.setDate(DatRef.year(),mesSelecionado,1);
     QDate fimDatLan;
     fimDatLan.setDate(iniDatLan.year(),iniDatLan.month(),iniDatLan.daysInMonth());
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QString tmp = "SELECT TipLan.DesTip, TipLan.NatTip, LanMes.DatLan, LanMes.NumPar, LanMes.VlrPar, LanMes.ObsLan FROM LanMes,TipLan WHERE LanMes.DatLan BETWEEN '"+iniDatLan.toString("dd/MM/yyyy")+"' AND '"+fimDatLan.toString("dd/MM/yyyy")+"' AND LanMes.TipLan = TipLan.CodTip";
-    model->setQuery(tmp);
-    model->setHeaderData(0, Qt::Horizontal, tr("Descrição"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Natureza"));
-    model->setHeaderData(2, Qt::Horizontal, tr("Data"));
-    model->setHeaderData(3, Qt::Horizontal, tr("Parcela"));
-    model->setHeaderData(4, Qt::Horizontal, tr("Valor"));
-    model->setHeaderData(5, Qt::Horizontal, tr("Observação"));
-    tableMes->setModel(model);
+    LancamentoDAO dialogDAO(con);
+    lineMes->setText(QString::number((dialogDAO.getProventos(iniDatLan,fimDatLan))-(dialogDAO.getDespesas(iniDatLan,fimDatLan))));
+    tableMes->setModel(dialogDAO.get(iniDatLan,fimDatLan));
+    update();
 }

@@ -22,7 +22,6 @@ CadastroLancamento::~CadastroLancamento() {
 void CadastroLancamento::gravaLancamento() {
     QDate dialog = ui->dateEditDataLancamento->date();
     for (int i = 1; i <= ui->spinBoxQtdParcelas->value(); ++i) {
-        //std::cout << dialog.toString("dd/MM/yyyy").toStdString() << std::endl;
         TipoLancamento dialogTipo = listTipos.at(ui->comboBoxTipoDeLancamento->currentIndex());
         Lancamento * dialogLancamento = new Lancamento(0,
                                             &dialogTipo,

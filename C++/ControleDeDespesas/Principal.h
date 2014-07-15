@@ -18,7 +18,7 @@ class Principal : public QMainWindow {
     
 public:
     explicit Principal(QWidget *parent = 0);
-    void atualizaTabela(QTableView * tableMes, int mesSelecionado);
+    void atualizaTabela(QTableView * tableMes, QLineEdit *lineMes, int mesSelecionado);
     ~Principal();
     
 private:
