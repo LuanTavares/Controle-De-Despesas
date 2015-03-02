@@ -1,0 +1,16 @@
+INPUT(
+./release\Main.o
+./release\TipoLancamento.o
+./release\Lancamento.o
+./release\TipoLancamentoDAO.o
+./release\Conexao.o
+./release\LancamentoDAO.o
+./release\Principal.o
+./release\CadastroTipoLancamento.o
+./release\CadastroLancamento.o
+./release\qrc_Arquivos.o
+./release\qrc_Relatorios.o
+./release\moc_Principal.o
+./release\moc_CadastroTipoLancamento.o
+./release\moc_CadastroLancamento.o
+);

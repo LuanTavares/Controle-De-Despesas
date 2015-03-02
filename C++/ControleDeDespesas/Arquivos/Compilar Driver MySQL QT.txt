@@ -1,0 +1,34 @@
+C:\Qt\Qt5.3.2\5.3\Src\qtbase\src\plugins\sqldrivers\mysql
+http://www.seppemagiels.com/blog/create-mysql-driver-qt5-windows?page=1
+
+
+qmake "INCLUDEPATH+=C:/Program Files/MySQL/MySQL Server 5.6/include" "LIBS+=C:/Program Files/MySQL/MySQL Server 5.6/lib/libmysql.lib" mysql.pro
+
+qmake "INCLUDEPATH+=C:\\PROGRA~2\\MySQL\\MYSQLS~1.5\\include" "LIBS+=C:\\PROGRA~2\\MySQL\\MYSQLS~1.5\\lib\\libmysql.lib" -o Makefile mysql.pro
+
+set mysql=C:\\PROGRA~2\\MySQL\\MYSQLS~1.5\\include
+cd C:\QtSDK\QtSources\4.7.3\src\plugins\sqldrivers\mysql\
+qmake "INCLUDEPATH+=%mysql%\\include\\mysql" "LIBS+=%mysql%\\lib\\libmysql.lib" -o Makefile mysql.pro
+mingw32-make
+qmake "INCLUDEPATH+=%mysql%\\include\\mysql" "LIBS+=%mysql%\\lib\\libmysql.lib" -o Makefile mysql.pro "CONFIG+=release"
+mingw32-make
+
+
+
+
+
+
+
+@echo off
+call C:\Qt\Qt5.0.2\5.0.2\mingw47_32\bin\qtenv2.bat
+
+cd C:\Qt\Qt5.0.2\qt-everywhere-opensource-src-5.0.2\qtbase\src\plugins\sqldrivers\mysql\
+
+for %%g in ("c:\Program Files\MySQL\MySQL Server 5.6\include") do set SQLINC=%%~fsg
+for %%g in ("c:\Program Files\MySQL\MySQL Server 5.6\lib\libmysql.lib") do set SQLLIB=%%~fsg
+
+qmake "INCLUDEPATH+=%SQLINC%" "LIBS+=%SQLLIB%" -o Makefile mysql.pro
+mingw32-make
+copy C:\Qt\Qt5.0.2\qt-everywhere-opensource-src-5.0.2\qtbase\plugins\sqldrivers\qsqlmysqld.dll C:\Qt\Qt5.0.2\5.0.2\mingw47_32\plugins\sqldrivers\
+copy c:\Program Files\MySQL\MySQL Server 5.5\lib\libmysql.dll C:\Windows
+pause

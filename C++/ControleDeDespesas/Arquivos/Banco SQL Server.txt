@@ -1,0 +1,17 @@
+CREATE TABLE [dbo].[TipLan](
+        [CodTip] [int] IDENTITY(1,1) NOT NULL,
+        [DesTip] [varchar](50) NULL,
+        [NatTip] [varchar](50) NULL,
+        PRIMARY KEY (CodTip)
+);
+
+CREATE TABLE [dbo].[LanMes](
+        [CodLan] [int] IDENTITY(1,1) NOT NULL,
+        [TipLan] [int] NOT NULL,
+        [DatLan] [date] NULL,
+        [NumPar] [int] NULL,
+        [VlrPar] [float] NULL,
+        [ObsLan] [varchar](50) NULL,
+        PRIMARY KEY(CodLan),
+        FOREIGN KEY(TipLan) REFERENCES TipLan (CodTip)
+);

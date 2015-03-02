@@ -22,7 +22,8 @@ HEADERS += \
     CadastroLancamento.h
 
 RESOURCES += \
-    Arquivos.qrc
+    Arquivos.qrc \
+    Relatorios.qrc
 
 FORMS += \
     Principal.ui \

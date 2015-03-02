@@ -613,16 +613,16 @@
    <widget class="QDateEdit" name="dateEditAnoRef">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>45</x>
       <y>0</y>
       <width>61</width>
-      <height>22</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Times New Roman</family>
-      <pointsize>12</pointsize>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="displayFormat">
@@ -630,7 +630,7 @@
     </property>
     <property name="date">
      <date>
-      <year>2014</year>
+      <year>2015</year>
       <month>1</month>
       <day>1</day>
      </date>
@@ -658,8 +658,15 @@
     </property>
     <addaction name="actionLancamento"/>
    </widget>
+   <widget class="QMenu" name="menuRelat_rios">
+    <property name="title">
+     <string>Relatórios</string>
+    </property>
+    <addaction name="actionGastos_com_Alimenta_o"/>
+   </widget>
    <addaction name="menuCadastro"/>
    <addaction name="menuLancamento"/>
+   <addaction name="menuRelat_rios"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionTipo">
@@ -670,6 +677,11 @@
   <action name="actionLancamento">
    <property name="text">
     <string>Lancamento</string>
+   </property>
+  </action>
+  <action name="actionGastos_com_Alimenta_o">
+   <property name="text">
+    <string>Gastos com Alimentação</string>
    </property>
   </action>
  </widget>

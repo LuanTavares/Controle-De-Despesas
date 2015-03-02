@@ -12,7 +12,7 @@ QList <TipoLancamento> TipoLancamentoDAO::getTiposLancamento(){
     QList <TipoLancamento> retorno;
     if(db.open()) {
         query = QSqlQuery(db);
-        query.prepare("SELECT CodTip, DesTip, NatTip FROM TipLan");
+        query.prepare("SELECT CodTip, DesTip, NatTip FROM TipLan ORDER BY DesTip");
         if(!query.exec()){
             std::cout << query.lastError().text().toStdString() << std::endl;
         } else {

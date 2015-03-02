@@ -6,6 +6,19 @@ Principal::Principal(QWidget *parent) : QMainWindow(parent), ui(new Ui::Principa
     connect(ui->actionLancamento,SIGNAL(triggered()),this,SLOT(cadastraLancamento()));
     connect(ui->actionTipo,SIGNAL(triggered()),this,SLOT(cadastraTipoLancamento()));
     connect(ui->tabWidgetMeses,SIGNAL(currentChanged(int)),this,SLOT(alimentaTabelas(int)));
+    connect(ui->actionGastos_com_Alimenta_o,SIGNAL(triggered()),this,SLOT(listaRelatorioAlimentacao()));
+    programa = new QString("C://Luan//Programas//openrpt-3.3.0//RPTrender.exe");
+    //programa = new QString("openrpt-3.3.0//RPTrender.exe");
+    parametros = new QStringList;
+    //parametros->append("-databaseURL=odbc:sqlserver://localhost");
+    parametros->append("-databaseURL=odbc:mysql://127.0.0.1/controlededespesa:3306");
+    parametros->append("-username=root");
+    parametros->append("-passwd=luantavares");
+    parametros->append("-PrintPreview");
+    parametros->append("-close");
+    parametros->append("C://Luan//Projetos//Controle-De-Despesas//C++//ControleDeDespesas//Relatorios//Alimentacao.xml");
+    processo = new QProcess(this);
+
     con = new Conexao();
     alimentaTabelas(ui->tabWidgetMeses->currentIndex());
 }
@@ -78,4 +91,15 @@ void Principal::atualizaTabela(QTableView *tableMes,QLineEdit *lineMes, int mesS
     lineMes->setText(QString::number((dialogDAO.getProventos(iniDatLan,fimDatLan))-(dialogDAO.getDespesas(iniDatLan,fimDatLan))));
     tableMes->setModel(dialogDAO.get(iniDatLan,fimDatLan));
     update();
+}
+
+void Principal::listaRelatorioAlimentacao() {
+  /*  QSqlDatabase db;
+    db = databaseFromURL( databaseURL );
+    if (!db.isValid()){
+
+    }*/
+    processo->start(*programa, *parametros);
+    /*if(!processo->waitForStarted())
+        std::cout << "Não Abriu" << std::endl;*/
 }

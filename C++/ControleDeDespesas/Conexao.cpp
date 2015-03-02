@@ -1,10 +1,13 @@
 #include "Conexao.h"
+#include <QSqlDriver>
 
 Conexao::Conexao() {
-    db = QSqlDatabase::addDatabase("QODBC");
+    db = QSqlDatabase::addDatabase("QMYSQL");
     db.setDatabaseName("controlededespesa");
-    db.setUserName("sa");
-    db.setPassword("C4nn184l@");
+    db.setHostName("localhost");
+    db.setPort(3306);
+    db.setUserName("root");
+    db.setPassword("luantavares");
 }
 
 QSqlDatabase Conexao::getDataBase(){

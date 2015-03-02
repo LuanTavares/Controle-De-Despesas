@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QString>
 #include <QStringList>
 #include <QSqlTableModel>
+#include <QProcess>
 #include "Conexao.h"
 #include "CadastroTipoLancamento.h"
 #include "CadastroLancamento.h"
@@ -24,11 +26,16 @@ public:
 private:
     Ui::Principal *ui;
     Conexao * con;
+    QProcess * processo;
+    QStringList * parametros;
+    QString * programa;
+
 
 public slots:
     void cadastraTipoLancamento();
     void cadastraLancamento();
     void alimentaTabelas(int mes);
+    void listaRelatorioAlimentacao();
 };
 
 #endif // PRINCIPAL_H

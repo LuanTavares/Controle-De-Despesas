@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Relatorios">
+        <file>Relatorios/RPTrender.exe</file>
+        <file>Relatorios/Alimentacao.xml</file>
+    </qresource>
+</RCC>

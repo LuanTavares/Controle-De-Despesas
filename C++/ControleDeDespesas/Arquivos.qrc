@@ -1,5 +1,6 @@
 <RCC>
-    <qresource prefix="/Auxiliares">
-        <file>Arquivos/Banco.txt</file>
+    <qresource prefix="/new/Arquivos">
+        <file>Arquivos/Banco SQL Server.txt</file>
+        <file>Arquivos/Compilar Driver MySQL QT.txt</file>
     </qresource>
 </RCC>

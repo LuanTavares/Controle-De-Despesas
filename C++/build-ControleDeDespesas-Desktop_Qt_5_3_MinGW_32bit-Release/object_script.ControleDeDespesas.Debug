@@ -1,0 +1,16 @@
+INPUT(
+./debug\Main.o
+./debug\TipoLancamento.o
+./debug\Lancamento.o
+./debug\TipoLancamentoDAO.o
+./debug\Conexao.o
+./debug\LancamentoDAO.o
+./debug\Principal.o
+./debug\CadastroTipoLancamento.o
+./debug\CadastroLancamento.o
+./debug\qrc_Arquivos.o
+./debug\qrc_Relatorios.o
+./debug\moc_Principal.o
+./debug\moc_CadastroTipoLancamento.o
+./debug\moc_CadastroLancamento.o
+);
