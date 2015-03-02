@@ -32,5 +32,3 @@ mingw32-make
 copy C:\Qt\Qt5.0.2\qt-everywhere-opensource-src-5.0.2\qtbase\plugins\sqldrivers\qsqlmysqld.dll C:\Qt\Qt5.0.2\5.0.2\mingw47_32\plugins\sqldrivers\
 copy c:\Program Files\MySQL\MySQL Server 5.5\lib\libmysql.dll C:\Windows
 pause
-
-Zapier
